@@ -191,7 +191,7 @@ impl<'d, D: Driver<'d>> Microphone<'d, D> {
         feature_unit_descriptor.push(0x00).unwrap(); // iFeature (none)
 
         // ===============================================
-        // Format desciptor [UAC 4.5.3]
+        // Format descriptor [UAC 4.5.3]
         // Used later, for operational streaming interface
         let mut format_descriptor: Vec<u8, { 6 + 3 * MAX_SAMPLE_RATE_COUNT }> = Vec::from_slice(&[
             FORMAT_TYPE,               // bDescriptorSubtype
@@ -649,7 +649,7 @@ impl<'d> Control<'d> {
             return None;
         }
 
-        if control_selector != SAMPLING_FREQ_CONTROL as u8 {
+        if control_selector != SAMPLING_FREQ_CONTROL {
             debug!(
                 "Unsupported endpoint get request for control selector {}.",
                 control_selector
